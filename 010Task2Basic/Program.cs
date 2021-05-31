@@ -8,7 +8,7 @@ namespace _010Task2Basic
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.WriteLine("Введите размер массива:");
             int array =int.Parse(Console.ReadLine()); 
