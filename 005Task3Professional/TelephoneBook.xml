@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Table>
+  <Telefon>
+    <Product_id>1</Product_id>
+    <Name>telephone 1</Name>
+    <TelephonePrice>1000</TelephonePrice>
+    <Number>+996704933737</Number>
+  </Telefon>
+  <Telefon>
+    <Product_id>2</Product_id>
+    <Name>telephone 2</Name>
+    <TelephonePrice>2000</TelephonePrice>
+    <Number>+996701526341</Number>
+  </Telefon>
+  <Telefon>
+    <Product_id>3</Product_id>
+    <Name>telephone 3</Name>
+    <TelephonePrice>3000</TelephonePrice>
+    <Number>+996500235689</Number>
+  </Telefon>
+  <Telefon>
+    <Product_id>4</Product_id>
+    <Name>telephone 4</Name>
+    <TelephonePrice>4000</TelephonePrice>
+    <Number>+996555784512</Number>
+  </Telefon>
+</Table>
