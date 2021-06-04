@@ -14,11 +14,12 @@ namespace _005Task3Professional
         static void Main(string[] args)
         {
 
-            XmlTextWriter writer = new XmlTextWriter(@"C:\Users\Baktilek\source\repos\005Task3Professional\TelephoneBook.xml", System.Text.Encoding.UTF8);
+            XmlTextWriter writer = new XmlTextWriter(@"C:\Users\Baktilek\source\repos\EFSOLL\005Task3Professional\TelephoneBook.xml", System.Text.Encoding.UTF8);
             writer.WriteStartDocument(true);
             writer.Formatting = Formatting.Indented;
             writer.Indentation = 2;
             writer.WriteStartElement("Table");
+            string name = Console.ReadLine();
             createNode("1", "telephone 1", "1000","+996704933737", writer);
             createNode("2", "telephone 2", "2000","+996701526341", writer);
             createNode("3", "telephone 3", "3000","+996500235689", writer);
@@ -28,7 +29,7 @@ namespace _005Task3Professional
             writer.Close();
             Console.WriteLine("XML файл был создан ! ");
             XmlDocument xDoc = new XmlDocument();
-            xDoc.Load(@"C:\Users\Baktilek\source\repos\005Task3Professional\TelephoneBook.xml");
+            xDoc.Load(@"C:\Users\Baktilek\source\repos\EFSOLL\005Task3Professional\TelephoneBook.xml");
             // получим корневой элемент
             XmlElement xRoot = xDoc.DocumentElement;
             // обход всех узлов в корневом элементе
@@ -56,7 +57,7 @@ namespace _005Task3Professional
         public static void createNode(string tID, string tName, string tPrice, string tNumber, XmlTextWriter writer)
         {
             writer.WriteStartElement("Telefon");
-            writer.WriteStartElement("Product_id");
+            writer.WriteStartElement("id");
             writer.WriteString(tID);
             writer.WriteEndElement();
             writer.WriteStartElement("Name");
