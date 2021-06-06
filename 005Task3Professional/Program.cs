@@ -19,7 +19,6 @@ namespace _005Task3Professional
             writer.Formatting = Formatting.Indented;
             writer.Indentation = 2;
             writer.WriteStartElement("Table");
-            string name = Console.ReadLine();
             createNode("1", "telephone 1", "1000","+996704933737", writer);
             createNode("2", "telephone 2", "2000","+996701526341", writer);
             createNode("3", "telephone 3", "3000","+996500235689", writer);
