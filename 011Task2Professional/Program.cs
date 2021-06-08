@@ -49,7 +49,6 @@ namespace _011Task2Professional
             {
                 using (StreamReader sr = new StreamReader(textfile2))
                 {
-
                     streamWriter3.WriteLine(sr.ReadToEnd());
                 }
             }
