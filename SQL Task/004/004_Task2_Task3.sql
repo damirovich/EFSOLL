@@ -1,0 +1,95 @@
+-------------004 Task2 SQL
+-------------------------------------------
+----create database Lesson004 on (
+----	name = 'Lesson004',		
+----	filename = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\Lesson004.mdf',
+----	size = 30MB,              
+----	maxsize = 100MB,
+----	filegrowth=10MB
+----)
+---------------------------------------------
+--use Lesson004
+---------------------------------------------
+----create table Info(
+----	InfoId int identity primary key not null,
+----	FullName varchar(45) null,
+----	Platon int null,
+----	Weapons varchar(45) null,
+----	GiveRank varchar(45) null
+----)
+----insert into Info (FullName, Platon, Weapons, GiveRank)
+----values
+----('Петров В.А.,оф.205', '222', 'АК-47', 'Буров О.С., майор'), 
+----('Петров В.А.,оф.205', '222', 'Глок20','Рыбаков Н.Г., майор'), 
+----('Лодарев П.С.,оф.221', '232', 'АК-74', 'Деребанов В.Я., подполковник'), 
+----('Лодарев П.С.,оф.221', '232','Глок20', 'Рыбаков Н.Г., майор'), 
+----('Леонтьев К.В., оф.201', '212', 'АК-47', 'Буров О.С., майор'),
+----('Леонтьев К.В., оф.201', '212', 'Глок20', 'Рыбаков Н.Г., майор'), 
+----('Духов Р.М. ','200', 'АК-47', 'Буров О.С., майор' );
+----------------------------------------------------------------
+--------------004 Task3 SQL
+----create table Weapons(
+----	IdWeapons int identity primary key not null,
+----	Name varchar(50) null
+----)
+-------------------------------------------------------------------
+----create table Customer (
+----	IdCustomer int identity primary key not null,
+----	FullName varchar(45) null,
+----	[Of] varchar(10) null,
+----	Platon int null
+----)
+-------------------------------------------------------------------
+----create table Position (
+----	IdPosition smallint identity primary key not null, 
+----	Name varchar(30) null
+----)
+-------------------------------------------------------------------
+----create table Provider (
+----	IdProvider int identity primary key not null,
+----	FullName varchar(50) null,
+----	PositionId smallint foreign key references Position (IdPosition) not null
+----)
+-------------------------------------------------------------------
+----create table InfoNew (
+----	IdInfoNew int identity primary key not null,
+----	WeaponsId int foreign key references Weapons(IdWeapons) not null,
+----	CustomerId int foreign key references Customer (IdCustomer) not null,
+----	ProviderId int foreign key references Provider(IdProvider) not null
+----)
+----------------------------------------------------------------------------
+----insert into Weapons values
+----('АК-47'),('Глок-20'),('АК-74')
+------------------------------------------------
+----insert into Position values
+----('Майор'),('подполковник')
+------------------------------------------------
+----insert into Provider
+----(FullName, PositionId)
+----values
+----('Буров О.С',1),
+----('Рыбаков Н.Г',1),
+----('Деребанов В.Я',2)
+--------------------------------------------------
+----insert into Customer
+----(FullName, [Of],Platon)
+----values
+----('Петров В.А','205',222),
+----('Лодарев П.С','232',232),
+----('Леонтьев К.В','201',212),
+----('Духов Р.М.','',200);
+--------------------------------------------------
+----insert into InfoNew
+----(WeaponsId,CustomerId,ProviderId)
+----values
+----(1,  1, 1), (2,  1, 2),(3,  2, 3),
+----(2,  2, 2),(1,  3, 1),(2,  3, 2),(1,  4, 1)
+--------------------------------------------------
+--------Запрос для информации
+--select Customer.FullName, Customer.[Of], Customer.Platon,
+--Weapons.Name, Provider.FullName, Position.Name
+--from InfoNew
+--inner join Customer on InfoNew.CustomerId=Customer.IdCustomer
+--inner join Weapons on InfoNew.WeaponsId=Weapons.IdWeapons
+--inner join Provider on InfoNew.ProviderId=Provider.IdProvider
+--inner join Position on Provider.PositionId=Position.IdPosition
