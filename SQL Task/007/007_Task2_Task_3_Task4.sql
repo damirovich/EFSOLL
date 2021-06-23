@@ -1,0 +1,77 @@
+--------007 SQL
+------------------------------------------------------
+--------007 Task 2
+--use MyJoinsDB-----База данных из урока 006 
+--select *from sys.indexes
+--where object_id=(select object_id from sys.tables where name='Employees')
+--------------------------------------------------------
+--select *from sys.indexes
+--where object_id=(select object_id from sys.tables where name='InfoEmpl')
+--------------------------------------------------------
+--select *from sys.indexes
+--where object_id=(select object_id from sys.tables where name='Salary')
+--------------------------------------------------------
+-------------007 Task 3
+--create table EmployeesIndex(
+--	IdEmployee int identity primary key not null,
+--	FullName varchar(50) null,
+--	PhoneNumber varchar(30) unique null
+--)
+--------------------------------------------------------
+--create table PositionIndex(
+--	idPosition smallint identity primary key not  null,
+--	Name varchar(50) unique null
+--)
+--------------------------------------------------------
+--create table SalaryIndex(
+--	IdSalary int identity primary key not null,
+--	Salary money null,
+--	PositionId smallint foreign key references PositionIndex(idPosition) null,
+--	EmployeeId int foreign key references EmployeesIndex(IdEmployee) null
+--)
+--------------------------------------------------------
+--create table InfoEmplIndex(
+--	IdInfoEmpl int identity primary key not null,
+--	FamilyInfo varchar(50) null,
+--	BirthDate date null,
+--	Addresss varchar(max) null,
+--	INN varchar(35) unique not null,
+--	EmployeeId int foreign key references EmployeesIndex(IdEmployee) not null
+--)
+----Добавил уникальные индексы в таблице employees на столбец номер телефона потому что номера тел не должны повторятся для 
+----каждого пользователя
+----Добавил таблицу Position и в этой таблице добавил уникальный индекс для столбца Наименование должностя (Name)
+----так как должности не должны повторятся
+----Добавил столбец INN в таблицу InfoEmpl и столбец INN сделал уникальный потому что у каждого гражданина не должны совадать 
+----INN номер 
+----Таким образом у каждой таблицы есть Кластеризованный индекс и Некластеризованный индекс
+----------------------------------------------------------------
+--select *from sys.indexes
+--where object_id=(select object_id from sys.tables where name='EmployeesIndex')
+----------------------------------------------------------------
+--select *from sys.indexes
+--where object_id=(select object_id from sys.tables where name='PositionIndex')
+----------------------------------------------------------------
+--select *from sys.indexes
+--where object_id =(select object_id from sys.tables where name='SalaryIndex')
+----------------------------------------------------------------
+--select *from sys.indexes
+--where object_id=(select object_id from sys.tables where name='InfoEmplIndex')
+--------007 Task 4
+--create View VInfoEmpl1
+--as 
+--select FullName, PhoneNumber, InfoEmpl.Addresss from Employees
+--inner join InfoEmpl on Employees.IdEmployee=InfoEmpl.EmployeeId
+------------------------------------------------------
+--create View VInfoEmpl2
+--as 
+--select FullName, InfoEmpl.BirthDate, PhoneNumber from Employees
+--inner join InfoEmpl on Employees.IdEmployee=InfoEmpl.EmployeeId
+--where FamilyInfo='не женат'or FamilyInfo= 'не замужем'
+-------------------------------------------------------
+--create View VInfoEmpl3
+--as 
+--select FullName, InfoEmpl.BirthDate, Salary.Position,PhoneNumber from Employees
+--inner join InfoEmpl on IdEmployee=InfoEmpl.EmployeeId
+--inner join Salary on IdEmployee=Salary.EmployeeId
+--where Position='менеджер'

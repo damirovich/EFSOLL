@@ -1,0 +1,97 @@
+----------009 SQL
+----------------008 Task 2
+--create database MyFuncDB
+--------------------------
+--use MyFuncDB
+--------------------------
+------------009 Task3 SQL
+--create table Employees(
+--	IdEmployee int identity primary key not null,
+--	FullName varchar(50) null,
+--	PhoneNumber varchar(30) null
+--)
+-----------------------------------
+--create table Salary(
+--	IdSalary int identity primary key not null,
+--	Salary money null,
+--	Position varchar(50) null,
+--	EmployeeId int foreign key references Employees(IdEmployee) null
+
+--)
+-----------------------------------
+--create table InfoEmpl(
+--	IdInfoEmpl int identity primary key not null,
+--	FamilyStatus varchar(50) null,
+--	BirthDate date null,
+--	Addresss varchar(max) null,
+--	EmployeeId int foreign key references Employees(IdEmployee) not null
+--)
+---------------------------------------------
+--insert into Employees
+--(FullName,PhoneNumber)
+--values
+--('Ашыров Бактилек','+996704933737'),
+--('Кудайбергенов Субан','+996555895623'),
+--('Каныбеков Аскар','+996700524163'),
+--('Сеитмуратов Самат','+996777895645'),
+--('Сарыева Клара','+996701888888');
+--------------------------------------------
+--insert into Salary
+--(Salary,Position,EmployeeId)
+--values
+--('$150000','Главный директор',2),
+--('$80000','Менеджер',1),
+--('$60000','Рабочий',3),
+--('$60000','Рабочий',4),
+--('$85000','Менеджер',5);
+----------------------------------------
+--insert into InfoEmpl
+--(FamilyStatus,BirthDate,Addresss,EmployeeId)
+--values
+--('не женат','1999-05-01','обл.Нарын рн.Жумал с.Кызарт',1),
+--('жента','1998-12-24','г.Бишкек',2),
+--('не женат','2000-04-18','г.Каракол',3),
+--('женат','1999-01-25','г.Бишкек',4),
+--('не замужем','2000-07-15','г.Бишкек',5);
+-------------------------------------------------
+-------------009 Task 4 
+----Проверка при добавлении и обновлении информации о сотруднике поле статус семьии должен быть
+----женат или не женат или замужем  или не замужем 
+--create trigger Valid_Ins_InfoEmpl on InfoEmpl
+--for insert,update
+--as
+--if Exists(select * from inserted where FamilyStatus!='не женат' and FamilyStatus!='женат'
+--									   and FamilyStatus!='не замужем' and FamilyStatus!='замужем')
+--		 begin 
+--		 RAISERROR ('Ошибка при ввод Статус семии',1,16);
+--		 rollback transaction
+--		 end
+----------------------------------------------------------------
+------Проверка если у сотрудника возраст меньше 18 лет то не должен записаться в БД 
+--create TRIGGER Valid_Age_Ins_Up_InfoEmpl
+--ON InfoEmpl
+--FOR INSERT, UPDATE
+--AS
+--IF exists (SELECT * FROM inserted WHERE (Datediff(YEAR, BirthDate, getdate()))<18)
+--		begin
+--		rAISERROR ('Возраст сотрудника не должен быть меньше 18 лет',1,16)
+--		ROLLBACK TRANSACTION
+--		end
+----------------------------------------------------------------
+--create trigger Valid_Up_Employees on Employees
+--for update
+--as 
+--IF (UPDATE(FullName)or Update (PhoneNumber))
+--	begin 
+--	raiserror ('Нельзя изменят ФИО и номер телефона сотрудника',1,16);
+--	rollback transaction 
+--	end
+----------------------------------------------------------------
+--create trigger Valid_Del_Employees on Employees
+--for delete 
+--as 
+--if exists (Select * from deleted)
+--		  begin 
+--		  raiserror ('Нельзя удалят данные о сотурднике',1,16);
+--		  rollback transaction
+--		  end

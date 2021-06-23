@@ -1,0 +1,110 @@
+----------008 SQL
+----------------008 Task 2
+--create database MyFuncDB
+--------------------------
+--use MyFuncDB
+--------------------------
+------------008 Task3 SQL
+--create table Employees(
+--	IdEmployee int identity primary key not null,
+--	FullName varchar(50) null,
+--	PhoneNumber varchar(30) null
+--)
+-----------------------------------
+--create table Salary(
+--	IdSalary int identity primary key not null,
+--	Salary money null,
+--	Position varchar(50) null,
+--	EmployeeId int foreign key references Employees(IdEmployee) null
+
+--)
+-----------------------------------
+--create table InfoEmpl(
+--	IdInfoEmpl int identity primary key not null,
+--	FamilyStatus varchar(50) null,
+--	BirthDate date null,
+--	Addresss varchar(max) null,
+--	EmployeeId int foreign key references Employees(IdEmployee) not null
+--)
+---------------------------------------------
+--insert into Employees
+--(FullName,PhoneNumber)
+--values
+--('Ашыров Бактилек','+996704933737'),
+--('Кудайбергенов Субан','+996555895623'),
+--('Каныбеков Аскар','+996700524163'),
+--('Сеитмуратов Самат','+996777895645'),
+--('Сарыева Клара','+996701888888');
+--------------------------------------------
+--insert into Salary
+--(Salary,Position,EmployeeId)
+--values
+--('$150000','Главный директор',2),
+--('$80000','Менеджер',1),
+--('$60000','Рабочий',3),
+--('$60000','Рабочий',4),
+--('$85000','Менеджер',5);
+----------------------------------------
+--insert into InfoEmpl
+--(FamilyStatus,BirthDate,Addresss,EmployeeId)
+--values
+--('не женат','1999-05-01','обл.Нарын рн.Жумал с.Кызарт',1),
+--('жента','1998-12-24','г.Бишкек',2),
+--('не женат','2000-04-18','г.Каракол',3),
+--('женат','1999-01-25','г.Бишкек',4),
+--('не замужем','2000-07-15','г.Бишкек',5);
+-------------------------------------------------
+-------------008 Task 4 
+--create procedure CPInfoEmployees
+--as
+--select FullName, PhoneNumber, InfoEmpl.Addresss from Employees
+--inner join InfoEmpl on Employees.IdEmployee=InfoEmpl.EmployeeId
+------------------------------------------------------------------
+----Вызов ХП
+--exec CPInfoEmployees
+------------------------------------------------------------------
+--create function FNInfoEmployees()
+--returns table
+--as
+--return select FullName,PhoneNumber,InfoEmpl.Addresss from Employees
+--		inner join InfoEmpl on Employees.IdEmployee=InfoEmpl.EmployeeId
+-------------------------------------------------------------------
+-------Вызов Функции
+--Select  *from FNInfoEmployees()
+--------------------------------------------------------------------
+--create procedure CPInfoEmployees2
+--as
+--select FullName, InfoEmpl.BirthDate, PhoneNumber from Employees
+--inner join InfoEmpl on Employees.IdEmployee=InfoEmpl.EmployeeId
+--where FamilyStatus='не женат'or FamilyStatus= 'не замужем'
+---------------------------------------------------------
+--exec CPInfoEmployees2
+---------------------------------------------------------
+--create function FNInfoEmplyees2()
+--returns table 
+--as 
+--return select FullName,InfoEmpl.BirthDate,PhoneNumber from Employees
+--	   inner join InfoEmpl on Employees.IdEmployee=InfoEmpl.EmployeeId
+--				  where FamilyStatus='не женат' or FamilyStatus='не замужем'
+---------------------------------------------------------
+--select *from FNInfoEmplyees2()
+---------------------------------------------------------
+--create procedure CPInfoEmployees3
+--as 
+--select FullName, InfoEmpl.BirthDate, Salary.Position,PhoneNumber from Employees
+--inner join InfoEmpl on IdEmployee=InfoEmpl.EmployeeId
+--inner join Salary on IdEmployee=Salary.EmployeeId
+--where Position='менеджер'
+-------------------------------------------------------------
+--exec CPInfoEmployees3
+-------------------------------------------------------------
+--create function FNInfoEmployees3()
+--returns table 
+--as
+--return select FullName,InfoEmpl.BirthDate,Salary.Position,PhoneNumber from Employees
+--	   inner join InfoEmpl on IdEmployee=InfoEmpl.EmployeeId
+--	   inner join Salary on IdEmployee=Salary.EmployeeId
+--	   where Position='менеджер'
+--------------------------------------------------------------
+---select *from FNInfoEmployees3()
+----------------------------------------------------------
