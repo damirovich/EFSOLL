@@ -1,0 +1,21 @@
+﻿@using _005Task3ASP.Models
+@model List<Employees>
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <h2>Info Employees</h2>
+    @foreach (var item in Model)
+    {
+        <h4>Id: @item.Id</h4>
+        <h4>FullName: @item.FullName</h4>
+        <h4>Email: @item.Email</h4>
+        <h4>Position: @item.Position</h4>
+        <h4>Salary: @item.Salary</h4>
+        <hr />
+    }
+</body>
+</html>
