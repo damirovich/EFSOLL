@@ -1,0 +1,45 @@
+﻿@model IEnumerable<_007Task1ASP.Models.Student>
+
+@{
+    ViewData["Title"] = "Student";
+}
+
+<h4>Список студентов</h4>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <label>Id</label>
+            </th>
+            <th>
+                <label>ФИО Студента</label>
+            </th>
+            <th>
+                <label>Группа</label>
+            </th>
+            <th>
+                <label>Курс</label>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Group)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
