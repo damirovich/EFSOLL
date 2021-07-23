@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewData["Title"] = "List Weeks and Month";
+}
+<!--Первый способ через Inject-->
+@*@inject _004ASPAdvancedTask1V2.Service.IWeeks services
+@inject _004ASPAdvancedTask1V2.Service.IMonth monthservice
+<h3>Список дней недели</h3>
+@foreach (var nameWeeks in services.GetWeeks())
+{
+    <a>@nameWeeks</a>
+}
+
+<h3>Список Месяцев</h3>
+@foreach (var nameMonth in monthservice.GetMonths())
+{
+    <a>@nameMonth</a>
+}*@
+<!----------------------------------------------------------------->
+<!--Второй способ через контроллер-->
+<h3>Список Месяцев</h3>
+@ViewData["Months"]<br>
+<h3>Список дней недели</h3>
+@ViewData["Weeks"]
