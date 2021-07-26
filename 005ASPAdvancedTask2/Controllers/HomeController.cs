@@ -1,5 +1,5 @@
 ﻿using _005ASPAdvancedTask2.Models;
-using _005ASPAdvancedTask2.Services;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -14,22 +14,27 @@ namespace _005ASPAdvancedTask2.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly Service service;
-        private readonly IEmailService _emailService;
-        public HomeController(ILogger<HomeController> logger,Service service,IEmailService emailService)
+       // private readonly IEmailService _emailService;
+        public IEmailSender EmailSender { get; set; }
+        public HomeController(ILogger<HomeController> logger,Service service ,IEmailSender emailSender)
         {
             _logger = logger;
             this.service = service;
-            _emailService = emailService;
+            EmailSender = emailSender;
         }
 
         public IActionResult Index()
         {
             return View();
         }
-
-        public IActionResult ForgetPW([FromServices] IEmailService email) {
-            
-            return RedirectToAction("Index");
+        public IActionResult SendEmil() {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> SendEmil(string toAddress, string subject, string body)
+        {
+            await EmailSender.SendEmailAsync(toAddress, subject, body);
+            return View();
         }
         public IActionResult SendEmailCustom() {
             service.SendEmilCustom();

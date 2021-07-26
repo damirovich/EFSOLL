@@ -1,15 +1,11 @@
 using _005ASPAdvancedTask2.Models;
-using _005ASPAdvancedTask2.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace _005ASPAdvancedTask2
 {
@@ -27,8 +23,18 @@ namespace _005ASPAdvancedTask2
         {
             services.AddTransient<Service>();
             services.AddControllersWithViews();
-            services.AddSingleton<IEmailConfiguration>((IEmailConfiguration)Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
-            services.AddTransient<IEmailService, EmailService>();
+            //services.AddSingleton((IEmailConfiguration)Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
+            //services.AddTransient<IEmailService, EmailService>();
+            services.AddTransient<IEmailSender, MailKitEmailSender>();
+            services.Configure<MailKitEmailSenderOptions>(options =>
+            {
+                options.Host_Address = Configuration["ExternalProviders:MailKit:SMTP:Address"];
+                options.Host_Port = Convert.ToInt32(Configuration["ExternalProviders:MailKit:SMTP:Port"]);
+                options.Host_Username = Configuration["ExternalProviders:MailKit:SMTP:Account"];
+                options.Host_Password = Configuration["ExternalProviders:MailKit:SMTP:Password"];
+                options.Sender_EMail = Configuration["ExternalProviders:MailKit:SMTP:SenderEmail"];
+                options.Sender_Name = Configuration["ExternalProviders:MailKit:SMTP:SenderName"];
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
