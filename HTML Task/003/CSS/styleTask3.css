@@ -1,0 +1,27 @@
+.mh{
+   border: 3px solid black;
+}
+.mh2{
+    border: 6px dashed black;
+ }
+ .mh3{
+     border: 6px dotted black;
+ }
+ .mh4{
+     border: 8px double black;
+ }
+ .mh5{
+     border: 10px groove rgb(238, 234, 28);
+ }
+ .mh6{
+     border:10px ridge rgb(64, 167, 17);
+ }
+ .mh7{
+     border: 10px inset rgb(6, 148, 89);
+ }
+ .mh8{
+     border-width: 10px;
+     border-style: outset;
+     border-color: rgb(51, 8, 90);
+     
+ }

@@ -1,0 +1,51 @@
+div{
+    border: 2px solid rgb(3, 23, 80);
+    font-size: 22px;
+    
+}
+#header1{
+    width: 400px;
+    height: 50px;
+    background-color: rgb(73, 73, 64);
+    float: left;
+    margin: 3px;
+    color: white;
+}
+#header2{
+    width: 400px;
+    height: 50px;
+    background-color: rgb(122, 148, 87);
+    float: left;
+    margin: 3px;
+    color: white;
+}
+#header3{
+    width: 400px;
+    height: 50px;
+    background-color: rgb(19, 77, 153);
+    float: left;
+    margin: 3px;
+    color: white;
+}
+#content1{
+    width: 400px;
+    height: 350px;
+    background-color: rgb(116, 177, 149);
+    float: left;
+    margin: 3px;
+
+}
+#content2{
+    width: 400px;
+    height: 350px;
+    background-color: rgb(202, 207, 128);
+    float: left;
+    margin: 3px;
+}
+#content3{
+    width: 400px;
+    height: 350px;
+    background-color: rgb(23, 147, 230);
+    float: left;
+    margin: 3px;
+}

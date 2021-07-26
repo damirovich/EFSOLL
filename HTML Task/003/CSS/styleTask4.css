@@ -1,0 +1,33 @@
+.mh{
+    background-color: #618ee7;
+ }
+ .mh2{
+    background-color: rgb(26, 194, 180);
+  }
+  .mh3{
+      background-color: hsla(112, 92%, 49%, 0.53);
+  }
+  .mh6{
+      background-color: deepskyblue;
+  }
+ .mh4{
+     width: 350px;
+     height: auto;
+     background-image: url(img/html.png);
+     background-repeat: no-repeat;
+     border-width: 3px;
+     border-style: groove;
+     border-color: blueviolet;
+     background-clip:content-box;
+ }
+ .mh5{
+     width: 1000px;
+     height: 100px;
+     overflow-x: hidden;
+     overflow-y: scroll;
+     word-wrap: break-word;
+     background-image: url(img/drops.jpg);
+     background-size: 1000px 50px;
+     background-repeat: no-repeat;
+     background-attachment: scroll;
+ }
