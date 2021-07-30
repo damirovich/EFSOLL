@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+</head>
+
+<body>
+    <pre>
+        Задание:
+        Создайте два объекта, используя конструктор и литерал. Оба объекта должны содержать свойства firstName и lastName
+        с произвольными значениями. Создайте функцию print, которая будет принимать в качестве параметра объект и выводить свойства
+        lastName и firstName полученного объекта на экран.
+    </pre>
+    <script>
+        let Employees = {
+            firstName: "Baktilek",
+            lastName: "Ashyrov"
+        };
+        let Empl = new Object();
+        Empl.firstName = "Azim";
+        Empl.lastName = "Turdumambetov";
+        // function Prin(Employee, EmplObj) {
+        //     var result = "";
+        //     for(let i=0; i<Employees.length;i++){
+        //         let element=Employees[i];
+        //         console.log(element);
+        //     }
+        //     for (var i in EmplObj) {
+        //         if (EmplObj.hasOwnProperty(i)) {
+        //             result += EmplObj + "." + i + " = " + EmplObj[i] + "\n";
+        //         }
+        //     }
+        //     return result;
+        // }
+        // let ListEmpl=Prin(Employees,Empl);
+        // console.log(ListEmpl);
+        function print(Obj){
+            console.log(`firstName ${Obj.firstName}`);
+            console.log(`lastName ${Obj.lastName}`);
+        }
+        print(Employees);
+        print(Empl);
+    </script>
+</body>
+
+</html>

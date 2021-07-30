@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 8</title>
+</head>
+<body>
+    <pre>
+        Задание:
+        Дан массив целых чисел. Проверьте есть ли в нем одинаковые элементы. Если есть выведите их на экран.
+    </pre>
+    <script>
+        let values = [10, 20, 4, 6, 11, 9, 125, 10, 8, 0, 3, 5, 89, 12, 46, 77, 3];
+        for (let i = 0; i < values.length; i++) {
+            let item1=values[i];
+            for(let j=i+1;j<values.length;j++){
+                let item2=values[j];
+                if(item1==item2){
+                    console.log(item1);
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

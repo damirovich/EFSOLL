@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+</head>
+
+<body>
+    <pre>
+        Задание:
+        Напишите сценарий, который будет запрашивать у пользователя значения, до тех пор, пока тот не введет значение stop
+        Все введенные значения, если они являются числом, должны быть добавлены в массив.
+        После того, как пользователь ввел значение стоп, посчитайте сумму всех значений, которые находятся в массиве.
+    </pre>
+    <script>
+        let cities = [];
+        let sum = 0;
+        while (true) {
+            let input = prompt("Введите числовые значение\nДля выхода из программы введите stop");
+            let num = Number(input);
+            if (!isNaN(num)) {
+                cities.push(num);
+            }
+            if (input == "stop") {
+                break;
+            }
+        }
+        for (let i = 0; i < cities.length; i++) {
+            let elemet = cities[i];
+            sum += elemet;
+        }
+        console.log(`Элементы массива ${cities}`);
+        console.log(`Сумма всех элементов массива ${sum}`);
+    </script>
+</body>
+
+</html>
